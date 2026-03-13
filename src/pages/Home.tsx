@@ -111,7 +111,7 @@ export default function Home() {
                   <div className="exp-company">BNY</div>
                   <div className="exp-role">Software Engineer</div>
                 </div>
-                <div className="exp-meta">New York, NY<br />Aug 2024 – Present</div>
+                <div className="exp-meta">New York, NY<br />August 2024 – Present</div>
               </div>
               <div className="exp-body">
                 <ul>
@@ -129,7 +129,7 @@ export default function Home() {
                   <div className="exp-company">Technology for Occupational Performance Lab</div>
                   <div className="exp-role">Research Intern</div>
                 </div>
-                <div className="exp-meta">Gainesville, FL<br />Aug – Dec 2023</div>
+                <div className="exp-meta">Gainesville, FL<br />August 2023 – December 2023</div>
               </div>
               <div className="exp-body">
                 <ul>
@@ -146,7 +146,7 @@ export default function Home() {
                   <div className="exp-company">Northrop Grumman</div>
                   <div className="exp-role">Software Engineering Intern</div>
                 </div>
-                <div className="exp-meta">Huntsville, AL<br />Jun – Aug 2023</div>
+                <div className="exp-meta">Huntsville, AL<br />June 2023 – August 2023</div>
               </div>
               <div className="exp-body">
                 <ul>
@@ -220,7 +220,7 @@ export default function Home() {
                 {['C++','Qt'].map(t => <span key={t} className="stack-tag">{t}</span>)}
               </div>
               <p className="project-desc">
-                Word similarity engine using BFS/DFS graph algorithms across a 120,000+ word dataset. Optimized traversal for fast, accurate, and diverse results.
+                Word similarity engine using BFS/DFS graph algorithms across a 120k+ word dataset. Optimized traversal for fast, accurate, and diverse results.
               </p>
             </div>
 
