@@ -14,10 +14,11 @@ export default function Home() {
                 <span className="last">Garcia</span>
               </h1>
               <p className="hero-tagline animate-up">
-                <strong>Software Engineer at BNY</strong> — building fast, elegant systems at the
+                <strong>Software Engineer at BNY</strong> — building efficient, elegant systems at the
                 intersection of finance and technology.
               </p>
               <div className="hero-contact animate-up">
+                <a href="mailto:jeremy252002@gmail.com">Email</a>
                 <a href="https://linkedin.com/in/jeremysgarcia" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://github.com/jareuhmee" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
@@ -42,13 +43,13 @@ export default function Home() {
             <div className="about-text">
               <p>
                 Hello! I'm a <strong>full-stack software engineer</strong> based in New York City with a 
-                B.S. in Computer Science from the <strong>University of Florida</strong>. 
+                B.S. in Computer Science from the University of Florida. 
                 I'm passionate about using technology to solve real-world problems. 
-                At <strong>BNY</strong>, I build high-performance platforms for trade mapping and reconciliation, 
+                Working at BNY, I build high-performance platforms for trade mapping and reconciliation, 
                 turning complex financial workflows into actionable, reliable systems. 
               </p>
               <p>
-                I'm also drawn to <strong>healthcare and human-centered technology</strong>, having led a senior project prototyping a 
+                I'm also drawn to healthcare and human-centered technology, having led a senior project prototyping a 
                 caregiver support app for families navigating autistic meltdowns, and explored machine 
                 learning and motion capture for mobility analysis.
               </p>
@@ -180,6 +181,22 @@ export default function Home() {
 
             <div className="project-card">
               <div className="project-card-top">
+                <div className="project-title">UF FSA Website</div>
+                <div className="project-year">2023</div>
+              </div>
+              <div className="project-stack">
+                {['React.js','JavaScript','HTML/CSS'].map(t => <span key={t} className="stack-tag">{t}</span>)}
+              </div>
+              <p className="project-desc">
+                Launched the official website for UF's Filipino Student Association as the organization's first Webmaster. Collaborated with board members to integrate content, initiatives, and activities.
+              </p>
+              <a className="project-link" href="https://uffsa.net" target="_blank" rel="noopener noreferrer">
+                uffsa.net ↗
+              </a>
+            </div>
+
+            <div className="project-card">
+              <div className="project-card-top">
                 <div className="project-title">GatorEats</div>
                 <div className="project-year">2023</div>
               </div>
@@ -189,6 +206,9 @@ export default function Home() {
               <p className="project-desc">
                 Web app consolidating info for 27 UF dining locations — interactive Leaflet map, search filters, and nutritional data retrieval.
               </p>
+              <a className="project-link" href="https://www.cise.ufl.edu/~jeremygarcia/gatoreats/" target="_blank" rel="noopener noreferrer">
+                gatoreats ↗
+              </a>
             </div>
 
             <div className="project-card">
@@ -208,34 +228,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── LEADERSHIP ── */}
-      <section className="leadership">
+      {/* ── CONTACT ── */}
+      <section className="contact">
         <div className="page-wrapper">
-          <div className="section-tag">Leadership & Involvement</div>
-          <div className="leadership-list">
-
-            <div className="lead-item">
-              <div>
-                <div className="lead-org">Filipino Student Association</div>
-                <div className="lead-role">Webmaster</div>
-              </div>
-              <div className="lead-meta">Gainesville, FL<br />Jun 2023 – May 2024</div>
-              <p className="lead-desc">
-                Designed, developed, and launched uffsa.net using React.js; collaborated with board members to integrate content, initiatives, and org activities.
+          <div className="section-tag">Contact</div>
+          <div className="contact-inner">
+            <div className="contact-headline">
+              <h2 className="contact-title">Let's connect.</h2>
+              <p className="contact-sub">
+                Whether it's a new opportunity, a collaboration, or just to say hello — my inbox is open.
               </p>
             </div>
-
-            <div className="lead-item">
-              <div>
-                <div className="lead-org">Def Talent Jam</div>
-                <div className="lead-role">Multimedia & Design Committee Head</div>
+            <form
+              className="contact-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+                const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+                window.location.href = `mailto:jeremy252002@gmail.com?subject=Hey Jeremy — from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+              }}
+            >
+              <div className="contact-field">
+                <label className="contact-label" htmlFor="name">Name</label>
+                <input className="contact-input" id="name" name="name" type="text" placeholder="Your name" required />
               </div>
-              <div className="lead-meta">Gainesville, FL<br />Jun – Oct 2023</div>
-              <p className="lead-desc">
-                Led multimedia team for a 1,500+ attendee dance event — orchestrating task delegation and applying design principles across video, photo, and graphic deliverables.
-              </p>
-            </div>
-
+              <div className="contact-field">
+                <label className="contact-label" htmlFor="message">Message</label>
+                <textarea className="contact-input contact-textarea" id="message" name="message" placeholder="What's on your mind?" required />
+              </div>
+              <button className="contact-submit" type="submit">
+                <span>Send Message</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </form>
           </div>
         </div>
       </section>

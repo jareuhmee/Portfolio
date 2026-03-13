@@ -15,8 +15,9 @@ export default function Navbar() {
           {/* New scroll-to-section buttons for single page design */}
           {/* <button className="nav-button" onClick={() => document.querySelector('.hero')?.scrollIntoView({ behavior: 'smooth' })}>Home</button> */}
           <button className="nav-button" onClick={() => document.querySelector('.about')?.scrollIntoView({ behavior: 'smooth' })}>About</button>
-          <button className="nav-button" onClick={() => document.querySelector('.experience')?.scrollIntoView({ behavior: 'smooth' })}>Work</button>
+          <button className="nav-button" onClick={() => document.querySelector('.experience')?.scrollIntoView({ behavior: 'smooth' })}>Experience</button>
           <button className="nav-button" onClick={() => document.querySelector('.projects')?.scrollIntoView({ behavior: 'smooth' })}>Projects</button>
+          <button className="nav-button" onClick={() => document.querySelector('.contact')?.scrollIntoView({ behavior: 'smooth' })}>Contact</button>
         </div>
       </div>
     </nav>
