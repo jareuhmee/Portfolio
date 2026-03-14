@@ -15,7 +15,7 @@ export default function Home() {
                 <span className="last">Garcia</span>
               </h1>
               <p className="hero-tagline animate-up">
-                <strong>Software Engineer at BNY</strong> — building efficient, elegant systems at the
+                <strong>Software Engineer at BNY</strong> — building efficient systems at the
                 intersection of finance and technology.
               </p>
               <div className="hero-contact animate-up">
@@ -27,9 +27,16 @@ export default function Home() {
 
             {/* Portrait */}
             <div className="hero-portrait-wrap animate-up">
+              {/* Orbital rings */}
+              <div className="portrait-orbit orbit-1" aria-hidden="true" />
+              <div className="portrait-orbit orbit-2" aria-hidden="true" />
+              <div className="portrait-glow-blob" aria-hidden="true" />
               <div className="hero-portrait">
                 <img src="/portrait.jpg" alt="Jeremy Garcia" />
               </div>
+              {/* Floating accent dots */}
+              <div className="portrait-dot dot-tl" aria-hidden="true" />
+              <div className="portrait-dot dot-br" aria-hidden="true" />
             </div>
 
           </div>
@@ -86,6 +93,9 @@ export default function Home() {
           <div className="section-tag">Education</div>
           <div className="edu-card">
             <div>
+              <div className="edu-school-img-wrap">
+                <img className="edu-school-img" src="/logos/uf.png" alt="University of Florida" />
+              </div>
               <div className="edu-degree">B.S. Computer Science</div>
               <div className="edu-school">University of Florida — Gainesville, FL</div>
               <div className="edu-date-mobile">May 2024</div>
@@ -140,7 +150,7 @@ export default function Home() {
               </div>
               <div className="exp-body">
                 <ul>
-                  <li>Assessed the psychometric properties of the Technology for Occupational Performance (TOP) lab’s ToeScale prototype, a device that measures great toe strength to provide insights into potential gait and balance impairments</li>
+                  <li>Assessed the psychometric properties of the Technology for Occupational Performance (TOP) lab's ToeScale prototype, a device that measures great toe strength to provide insights into potential gait and balance impairments</li>
                   <li>Conducted clinical assessments using a markerless motion capture system (Theia3D) to evaluate joint biomechanics per IRB protocol</li>
                   <li>Applied machine learning to characterize force development curves for data analysis</li>
                 </ul>

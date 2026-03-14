@@ -2,22 +2,18 @@
 
 /* ── TOKENS ── */
 :root {
-  /* Base — dark charcoal-slate, noticeably lighter */
   --bg:             #1a2233;
   --bg-2:           #1f2a3e;
 
-  /* Glass surfaces — more opaque so cards read clearly */
   --surface:        rgba(255, 255, 255, 0.09);
   --surface-2:      rgba(255, 255, 255, 0.14);
   --surface-3:      rgba(255, 255, 255, 0.20);
   --surface-inset:  rgba(0, 0, 0, 0.12);
 
-  /* Glass borders — clearly visible */
   --border:         rgba(255, 255, 255, 0.16);
   --border-h:       rgba(255, 255, 255, 0.30);
   --border-sub:     rgba(255, 255, 255, 0.09);
 
-  /* Accent — bright, saturated cyan-blue */
   --accent:         #4dc4e8;
   --accent-2:       #38acd0;
   --accent-3:       #1e88b0;
@@ -25,36 +21,27 @@
   --accent-tint:    rgba(77, 196, 232, 0.13);
   --accent-glow:    rgba(77, 196, 232, 0.20);
 
-  /* Steel secondary */
   --steel:          #a8c0d4;
   --steel-tint:     rgba(168, 192, 212, 0.10);
 
-  /* Text — high contrast, bright */
   --text:           #f0f6fa;
   --text-2:         #aec4d6;
   --text-3:         #6a8898;
   --text-inv:       #0e1624;
 
-  /* Danger */
-  --red:            #d89090;
-
-  /* Fonts */
   --font-display:   'Plus Jakarta Sans', sans-serif;
   --font-body:      'DM Sans', sans-serif;
   --font-mono:      'DM Mono', monospace;
 
-  /* Shadows — softened to match lighter bg */
   --shadow-sm:      0 2px 12px rgba(0, 8, 24, 0.22);
   --shadow-md:      0 8px 32px rgba(0, 8, 24, 0.32), 0 2px 8px rgba(0, 8, 24, 0.18);
   --shadow-lg:      0 20px 60px rgba(0, 8, 24, 0.40), 0 4px 16px rgba(0, 8, 24, 0.24);
   --shadow-glow:    0 0 40px rgba(77, 196, 232, 0.18);
   --shadow-glow-h:  0 0 60px rgba(77, 196, 232, 0.26);
 
-  /* Glass blur */
   --blur:           blur(20px) saturate(1.5);
   --blur-light:     blur(12px) saturate(1.3);
 
-  /* Easing */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-spring:    cubic-bezier(0.34, 1.4, 0.64, 1);
   --ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
@@ -62,7 +49,11 @@
 
 /* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+}
 
 body {
   background-color: var(--bg);
@@ -71,12 +62,14 @@ body {
     radial-gradient(ellipse 50% 45% at 88% 20%,  rgba(40, 110, 165, 0.24) 0%, transparent 55%),
     radial-gradient(ellipse 60% 50% at  5% 80%,  rgba(35,  98, 148, 0.22) 0%, transparent 55%),
     radial-gradient(ellipse 55% 45% at 85% 90%,  rgba(55, 118, 172, 0.18) 0%, transparent 55%);
-  background-attachment: fixed;
+  /* background-attachment:fixed causes scroll jank and layout bugs on iOS Safari */
+  background-attachment: scroll;
   color: var(--text);
   font-family: var(--font-body);
   font-weight: 300;
   line-height: 1.65;
   min-height: 100vh;
+  max-width: 100%;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -107,11 +100,24 @@ a { color: inherit; text-decoration: none; }
 }
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-6px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-5px) rotate(1deg); }
+  66%       { transform: translateY(-10px) rotate(-0.5deg); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.08); }
+}
+@keyframes nameShimmer {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(350%); }
 }
 
 .animate-up {
-  opacity: 0;
+  opacity: 1;
   animation: fadeUp 0.65s var(--ease-out-quart) forwards;
 }
 .animate-up:nth-child(1) { animation-delay: 0.04s; }
@@ -126,6 +132,7 @@ a { color: inherit; text-decoration: none; }
   max-width: 960px;
   margin: 0 auto;
   padding: 0 32px;
+  overflow-x: clip;
 }
 
 /* ── NAVBAR ── */
@@ -257,10 +264,9 @@ a { color: inherit; text-decoration: none; }
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 0;
+  grid-template-columns: 1fr 260px;
+  gap: 0 24px;
   align-items: center;
-  position: relative;
 }
 
 .hero-content {
@@ -304,10 +310,15 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -3.5px;
   margin-bottom: 32px;
   position: relative;
+  /*
+   * line-height < 1 clips descenders (e.g. 'y' in Jeremy) on some
+   * renderers. Padding restores that space without altering visual rhythm.
+   */
+  padding-top: 0.06em;
+  padding-bottom: 0.14em;
+  overflow: visible;
 }
 
-/* GPU-cheap ambient glow: a blurred div behind the text.
-   Uses transform+opacity only — zero repaints, compositor-only. */
 .hero-name-glow {
   position: absolute;
   top: 30%;
@@ -319,7 +330,6 @@ a { color: inherit; text-decoration: none; }
   filter: blur(32px);
   pointer-events: none;
   z-index: 0;
-  will-change: opacity;
 }
 
 .hero-name > span {
@@ -329,29 +339,16 @@ a { color: inherit; text-decoration: none; }
 
 .hero-name .first {
   display: block;
-  background: linear-gradient(
-    160deg,
-    #ffffff 0%,
-    #e0eef6 45%,
-    #b8d4e4 100%
-  );
+  background: linear-gradient(160deg, #ffffff 0%, #e0eef6 45%, #b8d4e4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  /* No filter — glow handled by .hero-name-glow element in markup,
-     or via a cheap box-shadow on a sibling div if added later */
-}
-
-/* Shimmer: translate a highlight pseudo-element — GPU only, no repaint */
-@keyframes nameShimmer {
-  0%   { transform: translateX(-120%); }
-  100% { transform: translateX(350%); }
 }
 
 .hero-name .last {
   display: block;
+  margin-left: clamp(48px, 7vw, 96px);
   position: relative;
-  /* Static gradient base — no animation on background-position */
   background: linear-gradient(
     120deg,
     var(--accent-3)  0%,
@@ -362,25 +359,21 @@ a { color: inherit; text-decoration: none; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  /* Promote to own layer so the ::after sweep doesn't trigger parent repaints */
-  will-change: transform;
 }
 
-/* Travelling light sweep — translateX only, zero repaints */
+/* Shimmer sweep */
 .hero-name .last::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     105deg,
-    transparent        30%,
+    transparent            30%,
     rgba(255,255,255,0.18) 50%,
-    transparent        70%
+    transparent            70%
   );
-  /* Clip to text shape */
   -webkit-background-clip: text;
   background-clip: text;
-  /* Start off-screen left */
   transform: translateX(-120%);
   animation: nameShimmer 3.5s ease-in-out infinite;
   pointer-events: none;
@@ -434,40 +427,44 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  z-index: 3;
+  justify-content: center;
+  animation: floatSlow 8s ease-in-out infinite;
+  /* Enough padding so the hover lift and glow never get clipped */
+  padding: 16px;
 }
 
 .hero-portrait-wrap::before {
   content: '';
   position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 380px;
+  inset: 0;
+  background: radial-gradient(ellipse, rgba(77, 196, 232, 0.22) 0%, transparent 68%);
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(70, 140, 200, 0.24) 0%, transparent 68%);
+  filter: blur(24px);
   pointer-events: none;
   z-index: 0;
-  animation: float 7s ease-in-out infinite;
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+/* Unused orbit/dot/blob nodes are hidden */
+.portrait-orbit,
+.portrait-glow-blob,
+.portrait-dot {
+  display: none;
 }
 
 .hero-portrait {
-  width: 260px;
+  position: relative;
+  z-index: 2;
+  width: 240px;
   aspect-ratio: 4 / 5;
   border-radius: 26px;
   overflow: hidden;
-  border: 1px solid var(--border-h);
-  position: relative;
-  z-index: 2;
-  transform: translateY(0px);
-
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  flex-shrink: 0;
   box-shadow:
-    0 24px 64px rgba(0, 8, 24, 0.50),
-    0  6px 20px rgba(0, 8, 24, 0.32),
-    0  0  0px  rgba(77, 196, 232, 0);
-
+    0 24px 64px rgba(0, 8, 24, 0.55),
+    0  6px 20px rgba(0, 8, 24, 0.35),
+    0  0  40px rgba(77, 196, 232, 0.16);
   transition:
     box-shadow 0.55s var(--ease-smooth),
     transform  0.45s var(--ease-out-quart),
@@ -475,13 +472,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-portrait:hover {
+  border-color: rgba(77, 196, 232, 0.38);
   transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.26);
-
   box-shadow:
-    0 32px 80px rgba(0, 8, 24, 0.58),
+    0 32px 80px rgba(0, 8, 24, 0.60),
     0  8px 24px rgba(0, 8, 24, 0.40),
-    0  0  50px  rgba(77, 196, 232, 0.22);
+    0  0  70px rgba(77, 196, 232, 0.30);
 }
 
 .hero-portrait img {
@@ -601,6 +597,25 @@ a { color: inherit; text-decoration: none; }
   border-color: var(--border-h);
   box-shadow: var(--shadow-lg), var(--shadow-glow);
   transform: translateY(-2px);
+}
+
+.edu-school-img-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+.edu-school-img {
+  display: block;
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .edu-degree {
@@ -880,7 +895,6 @@ a { color: inherit; text-decoration: none; }
 .contact {
   padding: 80px 0 100px;
   border-top: 1px solid var(--border-sub);
-  position: relative;
 }
 
 .contact-inner {
@@ -981,7 +995,7 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 4px 20px rgba(77, 196, 232, 0.28);
   transition: box-shadow 0.35s var(--ease-smooth),
               transform 0.2s var(--ease-spring),
-              filter 0.2s, background 0.2s;
+              background 0.2s;
 }
 
 .contact-submit:hover {
@@ -994,42 +1008,110 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(0) scale(0.99);
 }
 
-/* ── RESPONSIVE ── */
+/* ══════════════════════════════════════════
+   RESPONSIVE — ≤ 700 px
+   ══════════════════════════════════════════ */
 @media (max-width: 700px) {
-  .page-wrapper { padding: 0 16px; }
+  /* ── Base ── */
+  .page-wrapper { padding: 0 20px; }
 
+  /* ── Navbar ── */
   .navbar-inner {
-    padding: 0 16px;
+    padding: 8px 20px;
     height: auto;
     min-height: 52px;
     flex-wrap: wrap;
     gap: 6px;
-    padding-top: 8px;
-    padding-bottom: 8px;
   }
 
   .navbar-logo { font-size: 11px; }
-  .navbar-links { gap: 4px; flex-wrap: wrap; }
-
+  .navbar-links { gap: 2px; flex-wrap: wrap; }
   .navbar-links a,
   .navbar-links button { font-size: 11px; padding: 5px 10px; }
 
-  .footer-inner { padding: 24px 16px; flex-direction: column; gap: 12px; }
+  /* ── Footer ── */
+  .footer-inner { padding: 24px 20px; flex-direction: column; gap: 12px; }
 
-  .hero-layout { grid-template-columns: 1fr; }
-  .hero-name { letter-spacing: -2px; }
-  .hero-portrait-wrap { margin-bottom: 0; margin-top: 40px; justify-content: flex-start; }
-  .hero-portrait { width: 160px; transform: none; border-radius: 16px; }
-  .hero-portrait:hover { transform: translateY(-4px); }
+  /* ── Hero ── */
+  .hero { padding: 48px 0 64px; }
 
-  .about-grid { grid-template-columns: 1fr; gap: 36px; }
-  .edu-card { grid-template-columns: 1fr; border-radius: 16px; padding: 28px 24px; }
+  /*
+   * Reorder: eyebrow (1) → name (2) → portrait (3) → tagline (4) → contacts (5).
+   * hero-content uses display:contents so its children participate in the
+   * flex stack directly alongside hero-portrait-wrap.
+   * overflow:hidden on the layout clips the portrait glow and prevents hscroll.
+   */
+  .hero-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: clip;
+  }
+
+  .hero-content { display: contents; }
+
+  .hero-eyebrow { order: 1; margin-bottom: 16px; }
+  .hero-name    { order: 2; margin-bottom: 0; }
+  .hero-tagline {
+    order: 4;
+    margin-bottom: 28px;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-contact {
+    order: 5;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Portrait between name and tagline */
+  .hero-portrait-wrap {
+    order: 3;
+    width: 100%;
+    margin: 24px 0 28px;
+    animation: float 6s ease-in-out infinite;
+    padding: 16px;
+  }
+
+  .hero-portrait { width: 180px; border-radius: 18px; }
+  /* No hover lift on touch — no cursor precision */
+  .hero-portrait:hover { transform: none; }
+
+  .hero-name {
+    font-size: clamp(48px, 13vw, 68px);
+    letter-spacing: -1.5px;
+    max-width: 100%;
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-name .first,
+  .hero-name .last {
+    display: inline;
+    margin-left: 0;
+  }
+
+  /* Space between first and last name */
+  .hero-name .last::before { content: ' '; }
+
+  /* ── About ── */
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  /* ── Education ── */
+  .edu-card { padding: 24px; grid-template-columns: 1fr; }
   .edu-date { display: none; }
   .edu-date-mobile { display: block; }
+
+  /* ── Experience ── */
   .exp-header { grid-template-columns: auto 1fr; }
-  .exp-meta { grid-column: 1 / -1; text-align: left; padding-left: 0; }
+  .exp-meta { grid-column: 1 / -1; text-align: left; }
+
+  /* ── Projects ── */
   .projects-grid { grid-template-columns: 1fr; }
-  .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+
+  /* ── Contact ── */
+  .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+  .contact-form  { padding: 24px; border-radius: 20px; }
   .contact-submit { width: 100%; justify-content: center; }
-  .contact-form { padding: 24px; border-radius: 20px; }
 }
