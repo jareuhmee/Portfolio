@@ -10,6 +10,7 @@ export default function Home() {
             <div className="hero-content">
               <p className="hero-eyebrow animate-up">New York, NY</p>
               <h1 className="hero-name animate-up">
+                <div className="hero-name-glow" aria-hidden="true" />
                 <span className="first">Jeremy</span>
                 <span className="last">Garcia</span>
               </h1>
@@ -107,6 +108,9 @@ export default function Home() {
 
             <div className="exp-item">
               <div className="exp-header">
+                <div className="exp-logo">
+                  <img src="/logos/bny.png" alt="BNY" />
+                </div>
                 <div>
                   <div className="exp-company">BNY</div>
                   <div className="exp-role">Software Engineer</div>
@@ -125,15 +129,18 @@ export default function Home() {
 
             <div className="exp-item">
               <div className="exp-header">
+                <div className="exp-logo">
+                  <img src="/logos/top-lab.png" alt="TOP Lab" />
+                </div>
                 <div>
-                  <div className="exp-company">Technology for Occupational Performance Lab</div>
+                  <div className="exp-company">TOP Lab</div>
                   <div className="exp-role">Research Intern</div>
                 </div>
                 <div className="exp-meta">Gainesville, FL<br />August 2023 – December 2023</div>
               </div>
               <div className="exp-body">
                 <ul>
-                  <li>Assessed psychometric properties of the ToeScale prototype — a device measuring great toe strength to identify gait and balance impairments</li>
+                  <li>Assessed the psychometric properties of the Technology for Occupational Performance (TOP) lab’s ToeScale prototype, a device that measures great toe strength to provide insights into potential gait and balance impairments</li>
                   <li>Conducted clinical assessments using a markerless motion capture system (Theia3D) to evaluate joint biomechanics per IRB protocol</li>
                   <li>Applied machine learning to characterize force development curves for data analysis</li>
                 </ul>
@@ -142,6 +149,9 @@ export default function Home() {
 
             <div className="exp-item">
               <div className="exp-header">
+                <div className="exp-logo">
+                  <img src="/logos/northrop-grumman.png" alt="Northrop Grumman" />
+                </div>
                 <div>
                   <div className="exp-company">Northrop Grumman</div>
                   <div className="exp-role">Software Engineering Intern</div>
@@ -150,8 +160,8 @@ export default function Home() {
               </div>
               <div className="exp-body">
                 <ul>
-                  <li>Contributed to C++/Java modeling and simulation software for the IBCS missile defense platform (Security Clearance: Secret)</li>
-                  <li>Automated a 20+ step Linux environment setup with a Bash/Zenity GUI installer, reducing setup time by 85%</li>
+                  <li>Contributed to C++/Java modeling and simulation software for the Integrated Battle Command System (IBCS), a multi-domain air and missile defense platform (Security Clearance: Secret)</li>
+                  <li>Automated a 20+ step Linux environment setup with a Bash/Zenity GUI installer, reducing setup time by 85% (40 minutes to 5 minutes)</li>
                 </ul>
               </div>
             </div>
@@ -191,7 +201,7 @@ export default function Home() {
                 Launched the official website for UF's Filipino Student Association as the organization's first Webmaster. Collaborated with board members to integrate content, initiatives, and activities.
               </p>
               <a className="project-link" href="https://uffsa.net" target="_blank" rel="noopener noreferrer">
-                uffsa.net ↗
+                uffsa.net <span className="arrow">→</span>
               </a>
             </div>
 
@@ -207,7 +217,7 @@ export default function Home() {
                 Web app consolidating info for 27 UF dining locations — interactive Leaflet map, search filters, and nutritional data retrieval.
               </p>
               <a className="project-link" href="https://www.cise.ufl.edu/~jeremygarcia/gatoreats/" target="_blank" rel="noopener noreferrer">
-                gatoreats ↗
+                gatoreats <span className="arrow">→</span>
               </a>
             </div>
 
@@ -236,7 +246,7 @@ export default function Home() {
             <div className="contact-headline">
               <h2 className="contact-title">Let's connect.</h2>
               <p className="contact-sub">
-                Whether it's a new opportunity, a collaboration, or just to say hello — my inbox is open.
+                Whether it's a new opportunity, a collaboration, or just to say hello — feel free to reach out!
               </p>
             </div>
             <form

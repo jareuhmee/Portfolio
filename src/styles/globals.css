@@ -2,53 +2,53 @@
 
 /* ── TOKENS ── */
 :root {
-  /* Base — deep navy */
-  --bg:             #0b0f1a;
-  --bg-2:           #0e1424;
+  /* Base — dark charcoal-slate, noticeably lighter */
+  --bg:             #1a2233;
+  --bg-2:           #1f2a3e;
 
-  /* Dark frosted glass surfaces */
-  --surface:        rgba(255, 255, 255, 0.04);
-  --surface-2:      rgba(255, 255, 255, 0.07);
-  --surface-3:      rgba(255, 255, 255, 0.11);
-  --surface-inset:  rgba(0, 0, 0, 0.18);
+  /* Glass surfaces — more opaque so cards read clearly */
+  --surface:        rgba(255, 255, 255, 0.09);
+  --surface-2:      rgba(255, 255, 255, 0.14);
+  --surface-3:      rgba(255, 255, 255, 0.20);
+  --surface-inset:  rgba(0, 0, 0, 0.12);
 
-  /* Glass borders */
-  --border:         rgba(255, 255, 255, 0.08);
-  --border-h:       rgba(255, 255, 255, 0.16);
-  --border-sub:     rgba(255, 255, 255, 0.05);
+  /* Glass borders — clearly visible */
+  --border:         rgba(255, 255, 255, 0.16);
+  --border-h:       rgba(255, 255, 255, 0.30);
+  --border-sub:     rgba(255, 255, 255, 0.09);
 
-  /* Accent — muted ice blue */
-  --accent:         #7eb8d4;
-  --accent-2:       #5a9ab8;
-  --accent-3:       #2e6880;
-  --accent-dim:     rgba(126, 184, 212, 0.55);
-  --accent-tint:    rgba(126, 184, 212, 0.08);
-  --accent-glow:    rgba(126, 184, 212, 0.12);
+  /* Accent — bright, saturated cyan-blue */
+  --accent:         #4dc4e8;
+  --accent-2:       #38acd0;
+  --accent-3:       #1e88b0;
+  --accent-dim:     rgba(77, 196, 232, 0.70);
+  --accent-tint:    rgba(77, 196, 232, 0.13);
+  --accent-glow:    rgba(77, 196, 232, 0.20);
 
   /* Steel secondary */
-  --steel:          #8fa8bc;
-  --steel-tint:     rgba(143, 168, 188, 0.08);
+  --steel:          #a8c0d4;
+  --steel-tint:     rgba(168, 192, 212, 0.10);
 
-  /* Text */
-  --text:           #dde6ee;
-  --text-2:         #8fa8bc;
-  --text-3:         #4a6070;
-  --text-inv:       #0b0f1a;
+  /* Text — high contrast, bright */
+  --text:           #f0f6fa;
+  --text-2:         #aec4d6;
+  --text-3:         #6a8898;
+  --text-inv:       #0e1624;
 
   /* Danger */
-  --red:            #c97a7a;
+  --red:            #d89090;
 
   /* Fonts */
   --font-display:   'Plus Jakarta Sans', sans-serif;
   --font-body:      'DM Sans', sans-serif;
   --font-mono:      'DM Mono', monospace;
 
-  /* Shadows — blue-tinted */
-  --shadow-sm:      0 2px 12px rgba(0, 10, 30, 0.35);
-  --shadow-md:      0 8px 32px rgba(0, 10, 30, 0.5), 0 2px 8px rgba(0, 10, 30, 0.3);
-  --shadow-lg:      0 20px 60px rgba(0, 10, 30, 0.6), 0 4px 16px rgba(0, 10, 30, 0.4);
-  --shadow-glow:    0 0 40px rgba(126, 184, 212, 0.10);
-  --shadow-glow-h:  0 0 60px rgba(126, 184, 212, 0.16);
+  /* Shadows — softened to match lighter bg */
+  --shadow-sm:      0 2px 12px rgba(0, 8, 24, 0.22);
+  --shadow-md:      0 8px 32px rgba(0, 8, 24, 0.32), 0 2px 8px rgba(0, 8, 24, 0.18);
+  --shadow-lg:      0 20px 60px rgba(0, 8, 24, 0.40), 0 4px 16px rgba(0, 8, 24, 0.24);
+  --shadow-glow:    0 0 40px rgba(77, 196, 232, 0.18);
+  --shadow-glow-h:  0 0 60px rgba(77, 196, 232, 0.26);
 
   /* Glass blur */
   --blur:           blur(20px) saturate(1.5);
@@ -67,10 +67,10 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse 70% 55% at 15%  0%,  rgba(60, 110, 160, 0.22) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 45% at 88% 20%,  rgba(40,  80, 120, 0.16) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at  5% 80%,  rgba(30,  70, 110, 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 45% at 85% 90%,  rgba(50,  90, 140, 0.12) 0%, transparent 55%);
+    radial-gradient(ellipse 70% 55% at 15%  0%,  rgba(60, 140, 200, 0.30) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 88% 20%,  rgba(40, 110, 165, 0.24) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at  5% 80%,  rgba(35,  98, 148, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 85% 90%,  rgba(55, 118, 172, 0.18) 0%, transparent 55%);
   background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-body);
@@ -133,7 +133,7 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(11, 15, 26, 0.75);
+  background: rgba(26, 34, 51, 0.82);
   backdrop-filter: var(--blur);
   -webkit-backdrop-filter: var(--blur);
   border-bottom: 1px solid var(--border);
@@ -191,7 +191,7 @@ a { color: inherit; text-decoration: none; }
 .footer {
   border-top: 1px solid var(--border-sub);
   margin-top: 120px;
-  background: rgba(11, 15, 26, 0.6);
+  background: rgba(26, 34, 51, 0.70);
   backdrop-filter: var(--blur-light);
   -webkit-backdrop-filter: var(--blur-light);
 }
@@ -233,7 +233,7 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   color: var(--accent);
   background: var(--accent-tint);
-  border: 1px solid rgba(126, 184, 212, 0.18);
+  border: 1px solid rgba(77, 196, 232, 0.22);
   padding: 5px 14px 5px 10px;
   border-radius: 100px;
   margin-bottom: 32px;
@@ -251,15 +251,15 @@ a { color: inherit; text-decoration: none; }
 
 /* ── HERO ── */
 .hero {
-  padding: 88px 0 100px;
+  padding: 96px 0 108px;
   position: relative;
 }
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr 260px;
+  grid-template-columns: 1fr 280px;
   gap: 0;
-  align-items: end;
+  align-items: center;
   position: relative;
 }
 
@@ -270,7 +270,6 @@ a { color: inherit; text-decoration: none; }
   z-index: 2;
 }
 
-/* Restored eyebrow — mono pill with left tick mark */
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -281,7 +280,7 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   color: var(--accent);
   background: var(--accent-tint);
-  border: 1px solid rgba(126, 184, 212, 0.18);
+  border: 1px solid rgba(77, 196, 232, 0.22);
   padding: 5px 14px 5px 12px;
   border-radius: 100px;
   margin-bottom: 24px;
@@ -299,21 +298,92 @@ a { color: inherit; text-decoration: none; }
 
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(52px, 8vw, 92px);
+  font-size: clamp(60px, 9.5vw, 108px);
   font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -2.5px;
-  margin-bottom: 28px;
+  line-height: 0.95;
+  letter-spacing: -3.5px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+/* GPU-cheap ambient glow: a blurred div behind the text.
+   Uses transform+opacity only — zero repaints, compositor-only. */
+.hero-name-glow {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(77, 196, 232, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(32px);
+  pointer-events: none;
+  z-index: 0;
+  will-change: opacity;
+}
+
+.hero-name > span {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-name .first {
   display: block;
-  color: var(--text);
+  background: linear-gradient(
+    160deg,
+    #ffffff 0%,
+    #e0eef6 45%,
+    #b8d4e4 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* No filter — glow handled by .hero-name-glow element in markup,
+     or via a cheap box-shadow on a sibling div if added later */
+}
+
+/* Shimmer: translate a highlight pseudo-element — GPU only, no repaint */
+@keyframes nameShimmer {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(350%); }
 }
 
 .hero-name .last {
   display: block;
-  color: var(--accent);
+  position: relative;
+  /* Static gradient base — no animation on background-position */
+  background: linear-gradient(
+    120deg,
+    var(--accent-3)  0%,
+    var(--accent)    40%,
+    #a8e8f8          60%,
+    var(--accent-3)  100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Promote to own layer so the ::after sweep doesn't trigger parent repaints */
+  will-change: transform;
+}
+
+/* Travelling light sweep — translateX only, zero repaints */
+.hero-name .last::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent        30%,
+    rgba(255,255,255,0.18) 50%,
+    transparent        70%
+  );
+  /* Clip to text shape */
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Start off-screen left */
+  transform: translateX(-120%);
+  animation: nameShimmer 3.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .hero-tagline {
@@ -353,7 +423,7 @@ a { color: inherit; text-decoration: none; }
 
 .hero-contact a:hover {
   color: var(--accent);
-  border-color: rgba(126, 184, 212, 0.28);
+  border-color: rgba(77, 196, 232, 0.32);
   background: var(--surface-3);
   box-shadow: var(--shadow-md), var(--shadow-glow);
   transform: translateY(-2px);
@@ -362,50 +432,42 @@ a { color: inherit; text-decoration: none; }
 /* ── PORTRAIT ── */
 .hero-portrait-wrap {
   position: relative;
-  align-self: stretch;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
-  margin-bottom: -64px;
   z-index: 3;
 }
 
 .hero-portrait-wrap::before {
   content: '';
   position: absolute;
-  bottom: 40px;
-  right: -10px;
-  width: 260px;
-  height: 320px;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 380px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(60, 120, 180, 0.16) 0%, transparent 68%);
+  background: radial-gradient(ellipse, rgba(70, 140, 200, 0.24) 0%, transparent 68%);
   pointer-events: none;
   z-index: 0;
   animation: float 7s ease-in-out infinite;
 }
 
-/*
-  Portrait shadow fix: three layered transitions cover opacity,
-  spread, and blur independently so the glow eases in gradually
-  rather than snapping on at hover.
-*/
 .hero-portrait {
-  width: 240px;
+  width: 260px;
   aspect-ratio: 4 / 5;
-  border-radius: 24px;
+  border-radius: 26px;
   overflow: hidden;
   border: 1px solid var(--border-h);
   position: relative;
   z-index: 2;
-  transform: translateX(10px) translateY(-16px);
+  transform: translateY(0px);
 
-  /* base shadow — always present, just modest */
   box-shadow:
-    0 20px 60px rgba(0, 10, 30, 0.55),
-    0  4px 16px rgba(0, 10, 30, 0.35),
-    0  0  0px  rgba(126, 184, 212, 0);      /* glow seed at 0 spread */
+    0 24px 64px rgba(0, 8, 24, 0.50),
+    0  6px 20px rgba(0, 8, 24, 0.32),
+    0  0  0px  rgba(77, 196, 232, 0);
 
-  /* long, eased transitions for shadow and transform */
   transition:
     box-shadow 0.55s var(--ease-smooth),
     transform  0.45s var(--ease-out-quart),
@@ -413,14 +475,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-portrait:hover {
-  transform: translateX(10px) translateY(-22px);
-  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.26);
 
-  /* same three layers — glow seed expands to 40px, opacity fades in */
   box-shadow:
-    0 28px 72px rgba(0, 10, 30, 0.65),
-    0  6px 20px rgba(0, 10, 30, 0.45),
-    0  0  40px  rgba(126, 184, 212, 0.14);
+    0 32px 80px rgba(0, 8, 24, 0.58),
+    0  8px 24px rgba(0, 8, 24, 0.40),
+    0  0  50px  rgba(77, 196, 232, 0.22);
 }
 
 .hero-portrait img {
@@ -429,25 +490,24 @@ a { color: inherit; text-decoration: none; }
   object-fit: cover;
   object-position: center top;
   display: block;
-  filter: grayscale(15%) contrast(1.05) brightness(0.92);
+  filter: grayscale(10%) contrast(1.04) brightness(0.94);
   transition: transform 0.55s var(--ease-out-quart), filter 0.45s var(--ease-smooth);
 }
 
 .hero-portrait:hover img {
   transform: scale(1.04);
-  filter: grayscale(0%) contrast(1.06) brightness(0.96);
+  filter: grayscale(0%) contrast(1.05) brightness(0.98);
 }
 
-/* Subtle cool-tone overlay */
 .hero-portrait::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(126, 184, 212, 0.06) 0%,
+    rgba(77, 196, 232, 0.07) 0%,
     transparent 45%,
-    rgba(0, 0, 0, 0.15) 100%
+    rgba(0, 0, 0, 0.12) 100%
   );
   pointer-events: none;
   z-index: 3;
@@ -510,7 +570,7 @@ a { color: inherit; text-decoration: none; }
 
 .skill-tag:hover {
   color: var(--accent);
-  border-color: rgba(126, 184, 212, 0.28);
+  border-color: rgba(77, 196, 232, 0.32);
   background: var(--surface-3);
   transform: translateY(-1px);
 }
@@ -588,7 +648,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
   color: var(--accent);
   background: var(--accent-tint);
-  border: 1px solid rgba(126, 184, 212, 0.2);
+  border: 1px solid rgba(77, 196, 232, 0.24);
   padding: 4px 12px;
   border-radius: 100px;
   margin-top: 10px;
@@ -605,6 +665,27 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+.exp-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.exp-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .exp-item {
@@ -628,8 +709,8 @@ a { color: inherit; text-decoration: none; }
 .exp-header {
   padding: 26px 30px;
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4px 24px;
+  grid-template-columns: auto 1fr auto;
+  gap: 4px 16px;
   align-items: start;
 }
 
@@ -753,7 +834,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
   color: var(--accent-dim);
   background: var(--accent-tint);
-  border: 1px solid rgba(126, 184, 212, 0.14);
+  border: 1px solid rgba(77, 196, 232, 0.18);
   padding: 3px 10px;
   border-radius: 100px;
 }
@@ -772,7 +853,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
   color: var(--accent);
   background: var(--accent-tint);
-  border: 1px solid rgba(126, 184, 212, 0.18);
+  border: 1px solid rgba(77, 196, 232, 0.22);
   padding: 6px 16px;
   border-radius: 100px;
   align-self: flex-start;
@@ -780,10 +861,18 @@ a { color: inherit; text-decoration: none; }
               box-shadow 0.35s var(--ease-smooth), transform 0.2s var(--ease-spring);
 }
 
+.project-link .arrow {
+  margin-left: 4px;
+  font-family: monospace;
+  font-size: 10px;
+  display: inline-block;
+  transform: rotate(-45deg);
+}
+
 .project-link:hover {
-  background: rgba(126, 184, 212, 0.12);
-  border-color: rgba(126, 184, 212, 0.36);
-  box-shadow: 0 4px 16px rgba(126, 184, 212, 0.12);
+  background: rgba(77, 196, 232, 0.15);
+  border-color: rgba(77, 196, 232, 0.40);
+  box-shadow: 0 4px 16px rgba(77, 196, 232, 0.15);
   transform: translateY(-1px);
 }
 
@@ -862,9 +951,9 @@ a { color: inherit; text-decoration: none; }
 .contact-input::placeholder { color: var(--text-3); }
 
 .contact-input:focus {
-  border-color: rgba(126, 184, 212, 0.35);
-  background: rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 0 3px rgba(126, 184, 212, 0.07);
+  border-color: rgba(77, 196, 232, 0.40);
+  background: rgba(0, 0, 0, 0.20);
+  box-shadow: 0 0 0 3px rgba(77, 196, 232, 0.09);
 }
 
 .contact-textarea {
@@ -889,15 +978,15 @@ a { color: inherit; text-decoration: none; }
   border-radius: 100px;
   padding: 12px 28px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(126, 184, 212, 0.22);
+  box-shadow: 0 4px 20px rgba(77, 196, 232, 0.28);
   transition: box-shadow 0.35s var(--ease-smooth),
               transform 0.2s var(--ease-spring),
               filter 0.2s, background 0.2s;
 }
 
 .contact-submit:hover {
-  background: #96c8e0;
-  box-shadow: 0 8px 32px rgba(126, 184, 212, 0.30);
+  background: #80cce8;
+  box-shadow: 0 8px 32px rgba(77, 196, 232, 0.36);
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -928,6 +1017,7 @@ a { color: inherit; text-decoration: none; }
   .footer-inner { padding: 24px 16px; flex-direction: column; gap: 12px; }
 
   .hero-layout { grid-template-columns: 1fr; }
+  .hero-name { letter-spacing: -2px; }
   .hero-portrait-wrap { margin-bottom: 0; margin-top: 40px; justify-content: flex-start; }
   .hero-portrait { width: 160px; transform: none; border-radius: 16px; }
   .hero-portrait:hover { transform: translateY(-4px); }
@@ -936,8 +1026,8 @@ a { color: inherit; text-decoration: none; }
   .edu-card { grid-template-columns: 1fr; border-radius: 16px; padding: 28px 24px; }
   .edu-date { display: none; }
   .edu-date-mobile { display: block; }
-  .exp-header { grid-template-columns: 1fr; }
-  .exp-meta { text-align: left; }
+  .exp-header { grid-template-columns: auto 1fr; }
+  .exp-meta { grid-column: 1 / -1; text-align: left; padding-left: 0; }
   .projects-grid { grid-template-columns: 1fr; }
   .contact-inner { grid-template-columns: 1fr; gap: 36px; }
   .contact-submit { width: 100%; justify-content: center; }
